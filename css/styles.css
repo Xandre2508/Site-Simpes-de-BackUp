@@ -1,0 +1,47 @@
+/* Definição de Variáveis para consistência */
+:root {
+    --primary-color: #198754; /* Verde Bootstrap */
+    --accent-color: #e9ecef;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o footer fica em baixo */
+}
+
+/* Melhoria de Acessibilidade: Contraste e Foco */
+a:focus, button:focus, input:focus {
+    outline: 3px solid #ffbf00 !important; /* Amarelo de alto contraste */
+    outline-offset: 2px;
+}
+
+/* Hero Section Personalizada */
+.hero-section {
+    background: linear-gradient(rgba(25, 135, 84, 0.9), rgba(25, 135, 84, 0.7)), url('../img/batata-bg.jpg'); /* Adicionar uma imagem de fundo aqui */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Efeito Hover nos Cards (UX: Feedback visual) */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* Ajuste para imagens dos parceiros */
+.partner-logo {
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s;
+}
+
+.partner-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
