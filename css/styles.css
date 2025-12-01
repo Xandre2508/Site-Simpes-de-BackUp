@@ -1,47 +1,126 @@
-/* Definição de Variáveis para consistência */
+/* =========================================
+   1. GERAL (Váriaveis e Layout Base)
+   ========================================= */
 :root {
-    --primary-color: #198754; /* Verde Bootstrap */
-    --accent-color: #e9ecef;
+    --primary-green: #198754; /* Verde Bootstrap */
+    --earth-brown: #8D6E63;   /* Cor Terra */
+    --light-bg: #f8f9fa;
+    --dark-text: #212529;
+    --focus-color: #ffc107;   /* Amarelo para acessibilidade */
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Garante que o footer fica em baixo */
+    min-height: 100vh; /* Footer sempre em baixo */
+    color: var(--dark-text);
 }
 
-/* Melhoria de Acessibilidade: Contraste e Foco */
-a:focus, button:focus, input:focus {
-    outline: 3px solid #ffbf00 !important; /* Amarelo de alto contraste */
+main {
+    flex: 1;
+}
+
+/* Acessibilidade: Foco visível */
+a:focus, button:focus, input:focus, textarea:focus {
+    outline: 3px solid var(--focus-color) !important;
     outline-offset: 2px;
+    box-shadow: none;
 }
 
-/* Hero Section Personalizada */
+/* Navbar Personalizada */
+.navbar-brand i { margin-right: 8px; }
+.nav-link { transition: color 0.3s ease; }
+.nav-link:hover, .nav-link.active { color: var(--focus-color) !important; }
+
+/* Rodapé */
+footer {
+    background-color: #212529;
+    color: white;
+    margin-top: auto;
+}
+
+/* =========================================
+   2. ESTILOS DA PÁGINA INICIAL (index.html)
+   ========================================= */
 .hero-section {
-    background: linear-gradient(rgba(25, 135, 84, 0.9), rgba(25, 135, 84, 0.7)), url('../img/batata-bg.jpg'); /* Adicionar uma imagem de fundo aqui */
+    background: linear-gradient(rgba(25, 135, 84, 0.9), rgba(33, 37, 41, 0.8)), url('https://placehold.co/1200x600?text=Campo+de+Batatas');
     background-size: cover;
     background-position: center;
+    padding: 100px 0;
+    margin-bottom: 2rem;
 }
 
-/* Efeito Hover nos Cards (UX: Feedback visual) */
-.card {
+.hero-section h1 { font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+
+/* Cartões da Equipa */
+.card-team {
+    border: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+.card-team:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
-/* Ajuste para imagens dos parceiros */
+/* =========================================
+   3. ESTILOS DA PÁGINA PROJETO (projeto.html)
+   ========================================= */
+article h3 {
+    color: var(--primary-green);
+    border-left: 5px solid var(--earth-brown);
+    padding-left: 15px;
+    margin-top: 30px;
+}
+aside {
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+/* =========================================
+   4. ESTILOS DA PÁGINA PARCEIROS (parceiros.html)
+   ========================================= */
+.partner-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 180px;
+    background-color: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
 .partner-logo {
+    max-width: 80%;
+    max-height: 80%;
     filter: grayscale(100%);
-    opacity: 0.7;
-    transition: all 0.3s;
+    opacity: 0.6;
+    transition: filter 0.3s, opacity 0.3s;
 }
-
-.partner-logo:hover {
+.partner-card:hover {
+    border-color: var(--primary-green);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.partner-card:hover .partner-logo {
     filter: grayscale(0%);
     opacity: 1;
 }
+
+/* =========================================
+   5. ESTILOS DA PÁGINA CONTACTOS (contactos.html)
+   ========================================= */
+.contact-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.ratio iframe { border-radius: 8px; }
