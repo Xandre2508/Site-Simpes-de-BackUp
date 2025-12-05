@@ -14,24 +14,17 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Footer sempre em baixo */
-    color: var(--dark-text);
+    background-color: var(--light-bg);
+    
 }
 
-main {
-    flex: 1;
-}
-
-/* Acessibilidade: Foco visível */
-a:focus, button:focus, input:focus, textarea:focus {
-    outline: 3px solid var(--focus-color) !important;
-    outline-offset: 2px;
-    box-shadow: none;
-}
 
 /* Navbar Personalizada */
-.navbar-brand i { margin-right: 8px; }
-.nav-link { transition: color 0.3s ease; }
-.nav-link:hover, .nav-link.active { color: var(--focus-color) !important; }
+.navbar { color: white; border: 2px solid var(--primary-green); padding: 10px 20px; background-color: var(--dark-text); }
+.navbar-brand i { margin-right: 8px; height: 50px; margin-top: 25px; color: black;}
+.navbar-brand:hover{color: var(--primary-green); transform: translateY(-2px);}
+.nav-link { transition: color 0.3s ease; color: black}
+.nav-link:hover, .nav-link.active { color: var(--primary-green); transform: translateY(-2px); border: 1px solid var(--primary-green); border-radius: 5px; padding: 5px 10px; }
 
 /* Rodapé */
 footer {
@@ -44,7 +37,7 @@ footer {
    2. ESTILOS DA PÁGINA INICIAL (index.html)
    ========================================= */
 .hero-section {
-    background: linear-gradient(rgba(25, 135, 84, 0.9), rgba(33, 37, 41, 0.8)), url('https://placehold.co/1200x600?text=Campo+de+Batatas');
+    background-image: url('../img/CampoDeBatatas.png');
     background-size: cover;
     background-position: center;
     padding: 100px 0;
@@ -55,12 +48,33 @@ footer {
 
 /* Cartões da Equipa */
 .card-team {
-    border: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 400px;       /* Largura do retângulo */
+    height: 350px;      /* Altura do retângulo (bem alto como no desenho) */
+    background: rgba(0, 0, 0, 0.6); /* Fundo escuro transparente */
+    backdrop-filter: blur(10px);    /* Efeito vidro */
+    border: 5px solid var(--primary-green); /* Borda dourada suave */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 220px;
+    justify-content: flex-end; /* Texto no fundo do cartão */
+    padding: 20px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 .card-team:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    transform: translateY(-10px); /* Sobe um pouco */
+    border-color: 50px solid var(--focus-color); /* Borda fica dourado vivo */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.card-team img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-green);
+    margin-bottom: 15px;
 }
 
 /* =========================================
