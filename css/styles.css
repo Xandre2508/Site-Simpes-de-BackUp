@@ -15,16 +15,43 @@ body {
     flex-direction: column;
     min-height: 100vh; /* Footer sempre em baixo */
     background-color: var(--light-bg);
-    
 }
 
-
 /* Navbar Personalizada */
-.navbar { color: white; border: 2px solid var(--primary-green); padding: 10px 20px; background-color: var(--dark-text); }
-.navbar-brand i { margin-right: 8px; height: 50px; margin-top: 25px; color: black;}
-.navbar-brand:hover{color: var(--primary-green); transform: translateY(-2px);}
-.nav-link { transition: color 0.3s ease; color: black}
-.nav-link:hover, .nav-link.active { color: var(--primary-green); transform: translateY(-2px); border: 1px solid var(--primary-green); border-radius: 5px; padding: 5px 10px; }
+.navbar { 
+    border-bottom: 2px solid var(--primary-green); 
+    padding: 10px 20px; 
+    background-color: var(--dark-text); 
+}
+
+.navbar-brand i { 
+    margin-right: 8px; 
+    font-size: 1.5rem; /* Tamanho relativo */
+    vertical-align: middle;
+    color: var(--primary-green);
+}
+
+.navbar-brand:hover {
+    color: var(--primary-green); 
+    transform: translateY(-2px);
+}
+
+.navbar-brand {
+    color: white !important;
+}
+
+.nav-link { 
+    transition: color 0.3s ease; 
+    color: rgba(255,255,255,0.8) !important; /* Texto claro na navbar escura */
+    margin: 0 5px;
+}
+
+.nav-link:hover, .nav-link.active { 
+    color: var(--primary-green) !important; 
+    transform: translateY(-2px); 
+    border: 1px solid var(--primary-green); 
+    border-radius: 5px; 
+}
 
 /* Rodapé */
 footer {
@@ -37,45 +64,69 @@ footer {
    2. ESTILOS DA PÁGINA INICIAL (index.html)
    ========================================= */
 .hero-section {
-    background-image: url('../img/CampoDeBatatas.png');
+    background-image: url('../img/CampoDeBatatas.png'); /* Confirma se o caminho da imagem está certo */
     background-size: cover;
     background-position: center;
     padding: 100px 0;
     margin-bottom: 2rem;
+    position: relative;
 }
 
-.hero-section h1 { font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+/* Overlay escuro para o texto ser legível sobre a imagem */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+}
 
-/* Cartões da Equipa */
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section h1 { 
+    font-weight: 700; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
+}
+
+/* Cartões da Equipa - VERSÃO RESPONSIVA */
 .card-team {
-    width: 400px;       /* Largura do retângulo */
-    height: 350px;      /* Altura do retângulo (bem alto como no desenho) */
-    background: rgba(0, 0, 0, 0.6); /* Fundo escuro transparente */
-    backdrop-filter: blur(10px);    /* Efeito vidro */
-    border: 5px solid var(--primary-green); /* Borda dourada suave */
+    width: 100%;             /* Ocupa a largura da coluna */
+    max-width: 400px;        /* Limite máximo */
+    min-height: 400px;       /* Altura mínima */
+    background: rgba(0, 0, 0, 0.7); /* Fundo escuro */
+    backdrop-filter: blur(5px);
+    border: 3px solid var(--primary-green);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    left: 220px;
-    justify-content: flex-end; /* Texto no fundo do cartão */
-    padding: 20px;
+    justify-content: center; /* Centra verticalmente */
+    margin: 0 auto;          /* Centra na coluna */
+    padding: 30px 20px;
     transition: transform 0.3s ease, border-color 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    color: white;            /* Texto branco para contraste */
 }
+
 .card-team:hover {
-    transform: translateY(-10px); /* Sobe um pouco */
-    border-color: 50px solid var(--focus-color); /* Borda fica dourado vivo */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transform: translateY(-10px);
+    border-color: var(--focus-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
+
 .card-team img {
-    width: 220px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
     border-radius: 50%;
     border: 3px solid var(--primary-green);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
+
+.card-team h4 { color: var(--primary-green); }
+.card-team .text-muted { color: #ccc !important; }
 
 /* =========================================
    3. ESTILOS DA PÁGINA PROJETO (projeto.html)
@@ -87,7 +138,7 @@ article h3 {
     margin-top: 30px;
 }
 aside {
-    background-color: var(--light-bg);
+    background-color: white;
     border-radius: 8px;
     border: 1px solid #dee2e6;
 }
@@ -107,8 +158,8 @@ aside {
     transition: all 0.3s ease;
 }
 .partner-logo {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 90%;
+    max-height: 90%;
     filter: grayscale(100%);
     opacity: 0.6;
     transition: filter 0.3s, opacity 0.3s;
@@ -135,6 +186,21 @@ aside {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    margin-bottom: 10px;
+    min-width: 50px; /* Garante que não encolhe */
 }
 .ratio iframe { border-radius: 8px; }
+
+/* =========================================
+   6. MEDIA QUERIES (Ajustes Mobile)
+   ========================================= */
+@media (max-width: 768px) {
+    .hero-section h1 { font-size: 2.5rem; }
+    .hero-section p { font-size: 1.1rem; }
+    
+    .card-team { 
+        margin-bottom: 20px; 
+        width: 100%;
+    }
+    
+    .partner-card { height: 120px; }
+}
